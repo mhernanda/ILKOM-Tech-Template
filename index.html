@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./fontawesome/css/all.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbarNav" data-offset="200">
     <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-md navbar-light bg-light fixed-top py-2 py-md-0">
         <div class="container">
@@ -396,9 +396,26 @@
     <!-- Akhir Footer -->
 
 
-    
+
     <script src="./js/popper.js"></script>
     <script src="./js/jquery-3.5.1.js"></script>
     <script src="./js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("a").on('click', function(e) {
+
+                if(this.hash !== "") {
+                    e.preventDefault();
+
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function() {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
